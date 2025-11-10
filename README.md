@@ -1,4 +1,4 @@
-## Code Challenge: Two Sum
+## Code Challenge: Remove Duplicates from Sorted Array
 
 ### Instructions
 
@@ -11,33 +11,27 @@
 ---
 
 ### Problem (edit `index.js`)
-Given an array of integers `nums` and an integer `target`, return the indices of the two numbers such that they add up to `target`.
 
-- You may assume each input has exactly one solution.
-- You may not use the same element twice.
-- Return the answer in any order.
+Given an integer array `nums` sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.
 
-### Examples
+Consider the number of unique elements in `nums` to be `k`. After removing duplicates, return the number of unique elements `k`.
 
-Example 1:
+The first `k` elements of `nums` should contain the unique numbers in sorted order. The remaining elements beyond index `k - 1` can be ignored.
 
-```txt
-Input:  nums = [2, 7, 11, 15], target = 9
-Output: [0, 1]
-Explanation: nums[0] + nums[1] == 9, so return [0, 1].
+#### Example 1:
+
+```
+Input: nums = [1,1,2]
+Output: 2, nums = [1,2,_]
 ```
 
-Example 2:
+Explanation: Your function should return `k = 2`, with the first two elements of `nums` being `1` and `2` respectively. It does not matter what you leave beyond the returned `k` (hence they are underscores).
 
-```txt
-Input:  nums = [3, 2, 4], target = 6
-Output: [1, 2]
+#### Example 2:
+
+```
+Input: nums = [0,0,1,1,1,2,2,3,3,4]
+Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
 ```
 
-Example 3:
-
-```txt
-Input:  nums = [3, 3], target = 6
-Output: [0, 1]
-```
- 
+Explanation: Your function should return `k = 5`, with the first five elements of `nums` being `0`, `1`, `2`, `3`, and `4` respectively. It does not matter what you leave beyond the returned `k` (hence they are underscores).

@@ -1,41 +1,73 @@
 /**
- * Test suite for the Two Sum problem
+ * Test suite for the Remove Duplicates from Sorted Array problem
  *
- * Problem: Implement `twoSum(nums, target)` returning indices of two numbers
- * that add up to `target`. Each input has exactly one solution and the same
- * element cannot be used twice. Return indices in any order.
+ * Problem: Implement `removeDuplicates(nums)` that removes duplicates in-place
+ * from a sorted array and returns the number of unique elements `k`.
+ * The first `k` elements should contain the unique numbers in sorted order.
  */
 
-const { twoSum } = require('./index.js');
+const { removeDuplicates } = require('./index.js');
 
-describe('twoSum', () => {
+describe('removeDuplicates', () => {
   // Example test cases from README
   describe('Example test cases', () => {
-    test('returns [0, 1] for nums=[2,7,11,15], target=9', () => {
-      expect(twoSum([2, 7, 11, 15], 9)).toEqual([0, 1]);
+    test('Example 1: returns 2 for nums=[1,1,2]', () => {
+      const nums = [1, 1, 2];
+      const result = removeDuplicates(nums);
+      expect(result).toBe(2);
+      expect(nums.slice(0, result)).toEqual([1, 2]);
     });
 
-    test('returns [1, 2] for nums=[3,2,4], target=6', () => {
-      expect(twoSum([3, 2, 4], 6)).toEqual([1, 2]);
-    });
-
-    test('returns [0, 1] for nums=[3,3], target=6', () => {
-      expect(twoSum([3, 3], 6)).toEqual([0, 1]);
+    test('Example 2: returns 5 for nums=[0,0,1,1,1,2,2,3,3,4]', () => {
+      const nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+      const result = removeDuplicates(nums);
+      expect(result).toBe(5);
+      expect(nums.slice(0, result)).toEqual([0, 1, 2, 3, 4]);
     });
   });
 
   // Additional scenarios
   describe('Additional scenarios', () => {
-    test('works with negatives and positives', () => {
-      expect(twoSum([-1, -2, -3, -4, -5, 6], 1)).toEqual([4, 5]);
+    test('handles array with no duplicates', () => {
+      const nums = [1, 2, 3, 4, 5];
+      const result = removeDuplicates(nums);
+      expect(result).toBe(5);
+      expect(nums.slice(0, result)).toEqual([1, 2, 3, 4, 5]);
     });
 
-    test('works with zeros', () => {
-      expect(twoSum([0, 4, 3, 0], 0)).toEqual([0, 3]);
+    test('handles array with all duplicates', () => {
+      const nums = [1, 1, 1, 1, 1];
+      const result = removeDuplicates(nums);
+      expect(result).toBe(1);
+      expect(nums.slice(0, result)).toEqual([1]);
     });
 
-    test('works when the unique pair appears later in array', () => {
-      expect(twoSum([10, 20, 31, 40, 50, 60], 90)).toEqual([3, 4]);
+    test('handles single element array', () => {
+      const nums = [1];
+      const result = removeDuplicates(nums);
+      expect(result).toBe(1);
+      expect(nums.slice(0, result)).toEqual([1]);
+    });
+
+    test('handles array with negative numbers', () => {
+      const nums = [-3, -2, -2, -1, 0, 0, 1];
+      const result = removeDuplicates(nums);
+      expect(result).toBe(5);
+      expect(nums.slice(0, result)).toEqual([-3, -2, -1, 0, 1]);
+    });
+
+    test('handles empty array', () => {
+      const nums = [];
+      const result = removeDuplicates(nums);
+      expect(result).toBe(0);
+      expect(nums).toEqual([]);
+    });
+
+    test('handles array with alternating duplicates', () => {
+      const nums = [1, 2, 2, 3, 3, 3, 4, 5, 5];
+      const result = removeDuplicates(nums);
+      expect(result).toBe(5);
+      expect(nums.slice(0, result)).toEqual([1, 2, 3, 4, 5]);
     });
   });
 });
