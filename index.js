@@ -15,6 +15,7 @@
  */
 
 const removeDuplicates = (nums) => {
+    //write your code here
 };
 
 // Example usage (commented out to avoid interference with tests)
